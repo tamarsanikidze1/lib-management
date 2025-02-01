@@ -1,4 +1,3 @@
-<!-- resources/views/authors/index.blade.php -->
 @extends('layouts.app')
 
 @section('content')
@@ -9,6 +8,7 @@
             <tr>
                 <th>Name</th>
                 <th>Books</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -20,9 +20,13 @@
                             {{ $book->title }}<br>
                         @endforeach
                     </td>
+                    <td>
+                        <!-- Add any actions like edit or delete here -->
+                    </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
+        <a href="{{ route('authors.create') }}" class="btn btn-success">Add New Author</a>
     </div>
 @endsection

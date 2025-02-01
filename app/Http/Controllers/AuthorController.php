@@ -21,7 +21,7 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        //
+        return view('authors.create');
     }
 
     /**
@@ -29,7 +29,13 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255|unique:authors,name',
+        ]);
+
+        Author::create($request->only('name'));
+
+        return redirect()->route('authors.index')->with('success', 'Author added successfully.');
     }
 
     /**
